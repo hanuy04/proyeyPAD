@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_uniqloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="barang">
+    <Key>
+      <PropertyRef Name="id_barang" />
+    </Key>
+    <Property Name="id_barang" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nama_barang" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="harga_beli" Type="Int32" />
+    <Property Name="harga_jual" Type="Int32" />
+    <Property Name="stok_barang" Type="Int32" />
+    <Property Name="id_diskon" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="id_voucher" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="diskon" Relationship="Self.FK__barang__id_disko__3B75D760" FromRole="barang" ToRole="diskon" />
+    <NavigationProperty Name="voucher" Relationship="Self.FK__barang__id_vouch__3C69FB99" FromRole="barang" ToRole="voucher" />
+  </EntityType>
+  <EntityType Name="diskon">
+    <Key>
+      <PropertyRef Name="id_diskon" />
+    </Key>
+    <Property Name="id_diskon" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="jenis_diskon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="minimal_pembelian" Type="Int32" />
+    <Property Name="tanggal_mulai" Type="DateTime" Precision="3" />
+    <Property Name="tanggal_berakhir" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="barangs" Relationship="Self.FK__barang__id_disko__3B75D760" FromRole="diskon" ToRole="barang" />
+  </EntityType>
+  <EntityType Name="voucher">
+    <Key>
+      <PropertyRef Name="kode_voucher" />
+    </Key>
+    <Property Name="kode_voucher" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="minimal_poin" Type="Int32" />
+    <Property Name="tanggal_mulai" Type="DateTime" Precision="3" />
+    <Property Name="tanggal_berakhir" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="barangs" Relationship="Self.FK__barang__id_vouch__3C69FB99" FromRole="voucher" ToRole="barang" />
+  </EntityType>
+  <Association Name="FK__barang__id_disko__3B75D760">
+    <End Role="diskon" Type="Self.diskon" Multiplicity="0..1" />
+    <End Role="barang" Type="Self.barang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="diskon">
+        <PropertyRef Name="id_diskon" />
+      </Principal>
+      <Dependent Role="barang">
+        <PropertyRef Name="id_diskon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__barang__id_vouch__3C69FB99">
+    <End Role="voucher" Type="Self.voucher" Multiplicity="0..1" />
+    <End Role="barang" Type="Self.barang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="voucher">
+        <PropertyRef Name="kode_voucher" />
+      </Principal>
+      <Dependent Role="barang">
+        <PropertyRef Name="id_voucher" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_uniqloEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="barangs" EntityType="Self.barang" />
+    <EntitySet Name="diskons" EntityType="Self.diskon" />
+    <EntitySet Name="vouchers" EntityType="Self.voucher" />
+    <AssociationSet Name="FK__barang__id_disko__3B75D760" Association="Self.FK__barang__id_disko__3B75D760">
+      <End Role="diskon" EntitySet="diskons" />
+      <End Role="barang" EntitySet="barangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__barang__id_vouch__3C69FB99" Association="Self.FK__barang__id_vouch__3C69FB99">
+      <End Role="voucher" EntitySet="vouchers" />
+      <End Role="barang" EntitySet="barangs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

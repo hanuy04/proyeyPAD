@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="db_uniqloModelStoreContainer" CdmEntityContainer="db_uniqloEntities">
+    <EntitySetMapping Name="barangs">
+      <EntityTypeMapping TypeName="db_uniqloModel.barang">
+        <MappingFragment StoreEntitySet="barang">
+          <ScalarProperty Name="id_barang" ColumnName="id_barang" />
+          <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+          <ScalarProperty Name="harga_beli" ColumnName="harga_beli" />
+          <ScalarProperty Name="harga_jual" ColumnName="harga_jual" />
+          <ScalarProperty Name="stok_barang" ColumnName="stok_barang" />
+          <ScalarProperty Name="id_diskon" ColumnName="id_diskon" />
+          <ScalarProperty Name="id_voucher" ColumnName="id_voucher" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="diskons">
+      <EntityTypeMapping TypeName="db_uniqloModel.diskon">
+        <MappingFragment StoreEntitySet="diskon">
+          <ScalarProperty Name="id_diskon" ColumnName="id_diskon" />
+          <ScalarProperty Name="jenis_diskon" ColumnName="jenis_diskon" />
+          <ScalarProperty Name="minimal_pembelian" ColumnName="minimal_pembelian" />
+          <ScalarProperty Name="tanggal_mulai" ColumnName="tanggal_mulai" />
+          <ScalarProperty Name="tanggal_berakhir" ColumnName="tanggal_berakhir" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vouchers">
+      <EntityTypeMapping TypeName="db_uniqloModel.voucher">
+        <MappingFragment StoreEntitySet="voucher">
+          <ScalarProperty Name="kode_voucher" ColumnName="kode_voucher" />
+          <ScalarProperty Name="minimal_poin" ColumnName="minimal_poin" />
+          <ScalarProperty Name="tanggal_mulai" ColumnName="tanggal_mulai" />
+          <ScalarProperty Name="tanggal_berakhir" ColumnName="tanggal_berakhir" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

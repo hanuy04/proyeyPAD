@@ -19,7 +19,23 @@ namespace proyekPAD
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormMaster fm = new FormMaster();
+            this.Hide();
+            fm.ShowDialog();
+            this.Show();
+        }
+
+        private void buttonKasir_Click(object sender, EventArgs e)
+        {
+            FormKasir fk = new FormKasir();
+            this.Hide();
+            fk.ShowDialog();
+            this.Show();
         }
     }
 }

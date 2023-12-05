@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="db_uniqloModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="barang">
+          <Key>
+            <PropertyRef Name="id_barang" />
+          </Key>
+          <Property Name="id_barang" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="nama_barang" Type="varchar" MaxLength="255" />
+          <Property Name="harga_beli" Type="int" />
+          <Property Name="harga_jual" Type="int" />
+          <Property Name="stok_barang" Type="int" />
+          <Property Name="id_diskon" Type="varchar" MaxLength="5" />
+          <Property Name="id_voucher" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="diskon">
+          <Key>
+            <PropertyRef Name="id_diskon" />
+          </Key>
+          <Property Name="id_diskon" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="jenis_diskon" Type="varchar" MaxLength="255" />
+          <Property Name="minimal_pembelian" Type="int" />
+          <Property Name="tanggal_mulai" Type="datetime" />
+          <Property Name="tanggal_berakhir" Type="datetime" />
+        </EntityType>
+        <EntityType Name="voucher">
+          <Key>
+            <PropertyRef Name="kode_voucher" />
+          </Key>
+          <Property Name="kode_voucher" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="minimal_poin" Type="int" />
+          <Property Name="tanggal_mulai" Type="datetime" />
+          <Property Name="tanggal_berakhir" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__barang__id_disko__3B75D760">
+          <End Role="diskon" Type="Self.diskon" Multiplicity="0..1" />
+          <End Role="barang" Type="Self.barang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="diskon">
+              <PropertyRef Name="id_diskon" />
+            </Principal>
+            <Dependent Role="barang">
+              <PropertyRef Name="id_diskon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__barang__id_vouch__3C69FB99">
+          <End Role="voucher" Type="Self.voucher" Multiplicity="0..1" />
+          <End Role="barang" Type="Self.barang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="voucher">
+              <PropertyRef Name="kode_voucher" />
+            </Principal>
+            <Dependent Role="barang">
+              <PropertyRef Name="id_voucher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_uniqloModelStoreContainer">
+          <EntitySet Name="barang" EntityType="Self.barang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="diskon" EntityType="Self.diskon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="voucher" EntityType="Self.voucher" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__barang__id_disko__3B75D760" Association="Self.FK__barang__id_disko__3B75D760">
+            <End Role="diskon" EntitySet="diskon" />
+            <End Role="barang" EntitySet="barang" />
+          </AssociationSet>
+          <AssociationSet Name="FK__barang__id_vouch__3C69FB99" Association="Self.FK__barang__id_vouch__3C69FB99">
+            <End Role="voucher" EntitySet="voucher" />
+            <End Role="barang" EntitySet="barang" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="db_uniqloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="barang">
+          <Key>
+            <PropertyRef Name="id_barang" />
+          </Key>
+          <Property Name="id_barang" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nama_barang" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="harga_beli" Type="Int32" />
+          <Property Name="harga_jual" Type="Int32" />
+          <Property Name="stok_barang" Type="Int32" />
+          <Property Name="id_diskon" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="id_voucher" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="diskon" Relationship="Self.FK__barang__id_disko__3B75D760" FromRole="barang" ToRole="diskon" />
+          <NavigationProperty Name="voucher" Relationship="Self.FK__barang__id_vouch__3C69FB99" FromRole="barang" ToRole="voucher" />
+        </EntityType>
+        <EntityType Name="diskon">
+          <Key>
+            <PropertyRef Name="id_diskon" />
+          </Key>
+          <Property Name="id_diskon" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="jenis_diskon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="minimal_pembelian" Type="Int32" />
+          <Property Name="tanggal_mulai" Type="DateTime" Precision="3" />
+          <Property Name="tanggal_berakhir" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="barangs" Relationship="Self.FK__barang__id_disko__3B75D760" FromRole="diskon" ToRole="barang" />
+        </EntityType>
+        <EntityType Name="voucher">
+          <Key>
+            <PropertyRef Name="kode_voucher" />
+          </Key>
+          <Property Name="kode_voucher" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="minimal_poin" Type="Int32" />
+          <Property Name="tanggal_mulai" Type="DateTime" Precision="3" />
+          <Property Name="tanggal_berakhir" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="barangs" Relationship="Self.FK__barang__id_vouch__3C69FB99" FromRole="voucher" ToRole="barang" />
+        </EntityType>
+        <Association Name="FK__barang__id_disko__3B75D760">
+          <End Role="diskon" Type="Self.diskon" Multiplicity="0..1" />
+          <End Role="barang" Type="Self.barang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="diskon">
+              <PropertyRef Name="id_diskon" />
+            </Principal>
+            <Dependent Role="barang">
+              <PropertyRef Name="id_diskon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__barang__id_vouch__3C69FB99">
+          <End Role="voucher" Type="Self.voucher" Multiplicity="0..1" />
+          <End Role="barang" Type="Self.barang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="voucher">
+              <PropertyRef Name="kode_voucher" />
+            </Principal>
+            <Dependent Role="barang">
+              <PropertyRef Name="id_voucher" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="db_uniqloEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="barangs" EntityType="Self.barang" />
+          <EntitySet Name="diskons" EntityType="Self.diskon" />
+          <EntitySet Name="vouchers" EntityType="Self.voucher" />
+          <AssociationSet Name="FK__barang__id_disko__3B75D760" Association="Self.FK__barang__id_disko__3B75D760">
+            <End Role="diskon" EntitySet="diskons" />
+            <End Role="barang" EntitySet="barangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__barang__id_vouch__3C69FB99" Association="Self.FK__barang__id_vouch__3C69FB99">
+            <End Role="voucher" EntitySet="vouchers" />
+            <End Role="barang" EntitySet="barangs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db_uniqloModelStoreContainer" CdmEntityContainer="db_uniqloEntities">
+          <EntitySetMapping Name="barangs">
+            <EntityTypeMapping TypeName="db_uniqloModel.barang">
+              <MappingFragment StoreEntitySet="barang">
+                <ScalarProperty Name="id_barang" ColumnName="id_barang" />
+                <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+                <ScalarProperty Name="harga_beli" ColumnName="harga_beli" />
+                <ScalarProperty Name="harga_jual" ColumnName="harga_jual" />
+                <ScalarProperty Name="stok_barang" ColumnName="stok_barang" />
+                <ScalarProperty Name="id_diskon" ColumnName="id_diskon" />
+                <ScalarProperty Name="id_voucher" ColumnName="id_voucher" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="diskons">
+            <EntityTypeMapping TypeName="db_uniqloModel.diskon">
+              <MappingFragment StoreEntitySet="diskon">
+                <ScalarProperty Name="id_diskon" ColumnName="id_diskon" />
+                <ScalarProperty Name="jenis_diskon" ColumnName="jenis_diskon" />
+                <ScalarProperty Name="minimal_pembelian" ColumnName="minimal_pembelian" />
+                <ScalarProperty Name="tanggal_mulai" ColumnName="tanggal_mulai" />
+                <ScalarProperty Name="tanggal_berakhir" ColumnName="tanggal_berakhir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vouchers">
+            <EntityTypeMapping TypeName="db_uniqloModel.voucher">
+              <MappingFragment StoreEntitySet="voucher">
+                <ScalarProperty Name="kode_voucher" ColumnName="kode_voucher" />
+                <ScalarProperty Name="minimal_poin" ColumnName="minimal_poin" />
+                <ScalarProperty Name="tanggal_mulai" ColumnName="tanggal_mulai" />
+                <ScalarProperty Name="tanggal_berakhir" ColumnName="tanggal_berakhir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

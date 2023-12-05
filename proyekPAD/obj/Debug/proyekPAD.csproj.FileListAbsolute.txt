@@ -1,0 +1,16 @@
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\bin\Debug\proyekPAD.exe.config
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\bin\Debug\proyekPAD.exe
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\bin\Debug\proyekPAD.pdb
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\bin\Debug\EntityFramework.dll
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\bin\Debug\EntityFramework.xml
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\obj\Debug\proyekPAD.csproj.AssemblyReference.cache
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\obj\Debug\proyekPAD.Form1.resources
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\obj\Debug\proyekPAD.FormMaster.resources
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\obj\Debug\proyekPAD.Properties.Resources.resources
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\obj\Debug\proyekPAD.csproj.GenerateResource.cache
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\obj\Debug\proyekPAD.csproj.CoreCompileInputs.cache
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\obj\Debug\proyekPAD.csproj.CopyComplete
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\obj\Debug\proyekPAD.exe
+C:\Users\Hanvy\Documents\proyeyPAD\proyekPAD\obj\Debug\proyekPAD.pdb
